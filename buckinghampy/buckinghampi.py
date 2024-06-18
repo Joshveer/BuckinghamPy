@@ -315,16 +315,9 @@ class BuckinghamPi:
 
         print(tabulate(latex_form, headers=headers))
 
-    def print_all(self, latex_string=False):
-        '''
-        print all the sets of dimensionless groups in latex or symbolic form.
-        :latex_string: optional boolean. If set to True the function will print the latex string of the
-                        dimensionless groups. if set to False the function will print the symbolic form of the
-                        dimensionless groups.
-        '''
-        try:
-            ''' Try to render the latex in Jupyter cell'''
-            self.__Jupyter_print()
-        except:
-            ''' print the dimensionless sets in a tabulated format when in terminal session'''
-            self.__tabulate_print(latex_string)
+    def print_all(self):
+        for set_num, pi_set in enumerate(self.__allpiterms, start=1):
+            print(f"Set {set_num}")
+            for pi_num, pi_term in enumerate(pi_set, start=1):
+                print(f"π{pi_num}: {pi_term}")
+            print()
